@@ -7,7 +7,7 @@ locale  # verify settings
 
 # add ros2 repos
 sudo apt install software-properties-common
-sudo add-apt-repository universe
+sudo add-apt-repository universe -y
 
 # keyring
 sudo apt update && sudo apt install curl -y
@@ -15,14 +15,16 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 # build tools
-sudo apt update && sudo apt install ros-dev-tools
+sudo apt update && sudo apt install ros-dev-tools -y
 
 # install
-sudo apt update && sudo apt upgrade
-sudo apt install ros-jazzy-desktop
+sudo apt update && sudo apt upgrade -y
+sudo apt install ros-jazzy-desktop -y
 source /opt/ros/jazzy/setup.bash
 
 # colcon builder
 sudo sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo apt install python3-colcon-common-extensions
+sudo apt install python3-colcon-common-extensions -y
+
+source /opt/ros/jazzy/setup.bash
